@@ -3,6 +3,8 @@ import Frio from "../assets/frio.jpg";
 import Calor from "../assets/calor.webp"
 
 function EmojiTemperatura({temperatura}){
+
+    // JSX directamente no usamos If, es necesario usar operadores ternarios
     return(
         <View>
             {

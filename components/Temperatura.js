@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 
+//{latitud, longitud} -> destructuracion de objetos
 function Temperatura({latitud, longitud}){
 
     const [temperaturaCiudad, setTemperaturaCiudad] = useState(0);
+    // const [dataEmpleados, setDataEmpleados] = useState([]);
+    // const [info, setInfo] = useState({coordenas: {latitud: 0, longitud: 0}, temperatura: 0});
 
     useEffect(() => {
 
@@ -13,11 +16,15 @@ function Temperatura({latitud, longitud}){
             .then(data => {
                 setTemperaturaCiudad(data.hourly.temperature_2m[0])
             })
+
         }
 
     }, [latitud, longitud])
 
     return temperaturaCiudad;
+    // return(
+    //     <Text>La temperatura es: {temperaturaCiudad}</Text>
+    // )
 }
 
 export default Temperatura;

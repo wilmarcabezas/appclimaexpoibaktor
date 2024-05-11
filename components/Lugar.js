@@ -4,6 +4,7 @@ import Temperatura from "./Temperatura";
 import EmojiTemperatura from "./EmojiTemperatura";
 
 function Lugar({ ciudad }) {
+    //useState => Recordar objetos en el componente
     const [latitud, setLatitud] = useState(0);
     const [longitud, setLongitud] = useState(0);
 
@@ -12,8 +13,12 @@ function Lugar({ ciudad }) {
             fetch('https://geocoding-api.open-meteo.com/v1/search?name=' + ciudad)
                 .then(response => response.json())
                 .then(data => {
+                    //Como preguntar si hay "algo" en un objeto
+                    // objeto &&
                     if (data.results && data.results.length > 0) {
+                        //Destructuracion de objetos
                         const { latitude, longitude } = data.results[0];
+
                         setLatitud(latitude);
                         setLongitud(longitude);
                     } else {
@@ -31,7 +36,7 @@ function Lugar({ ciudad }) {
         }
     }, [ciudad]);
 
-    const valorTemperatura = Temperatura({ latitud, longitud });
+    const valorTemperatura = Temperatura({latitud, longitud});
 
     return (
         <View style={styles.container}>
